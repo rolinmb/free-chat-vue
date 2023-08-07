@@ -10,10 +10,19 @@
 </template>
 
 <script setup>
+import { signOut } from 'firebase/auth';
 import { auth } from './main.js';
 
 const logout = () => {
-  auth.signOut();
+  signOut(auth)
+  .then(() => {
+    alert('Successfully logged out');
+    this.$router.push('/');
+  })
+  .catch(error => {
+    alert(error.message);
+    this.$router.push('/');
+  });
 }
 
 </script>

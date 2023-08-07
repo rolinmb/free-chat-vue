@@ -9,6 +9,15 @@
   <router-view/>
 </template>
 
+<script setup>
+import { auth } from './main.js';
+
+const logout = () => {
+  auth.signOut();
+}
+
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

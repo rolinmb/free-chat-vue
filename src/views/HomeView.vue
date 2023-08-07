@@ -10,12 +10,8 @@
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import firebaseConfig from '@/main';
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+import auth from '@/main.js';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export default {
   name: 'HomeView',
@@ -24,8 +20,8 @@ export default {
   },
   methods: {
     loginWithGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
       .then(() => {
         this.$router.push('/dashboard');
       })

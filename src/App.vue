@@ -9,23 +9,22 @@
 </template>
 
 <script setup>
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import firebaseConfig from '@/main.js';
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+import auth from '@/main.js';
 
 const logout = () => {
-  auth.signOut()
-  .then(() => {
-    alert('Successfully logged out');
-    this.$router.push('/');
-  })
-  .catch(error => {
-    alert(error.message);
-    this.$router.push('/');
-  });
+  try {
+    auth.signOut()
+    .then(() => {
+      alert('Successfully logged out');
+      this.$router.push('/');
+    })
+    .catch(error => {
+      alert(error.message);
+      this.$router.push('/');
+    });
+  } catch (error) {
+    alert('No user is logged in (a.k.a. no user to sign out)');
+  }
 }
 
 </script>

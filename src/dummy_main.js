@@ -3,7 +3,6 @@ import router from './router';
 import App from './App.vue';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-// import { firestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "_",
@@ -14,10 +13,9 @@ const firebaseConfig = {
     appId: "_"
   };  
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-// const db = getFirestore(app);
+const fbaseApp = initializeApp(firebaseConfig);
+const fbaseAuth = getAuth(app);
 
 createApp(App).use(router).mount('#app');
 
-export { app, auth, /* db */ };
+export default { firebaseConfig, auth };

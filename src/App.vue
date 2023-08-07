@@ -2,7 +2,6 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/register">Register</router-link> |
     <router-link to="/dashboard">Dashboard</router-link> |
     <button @click="logout">Logout</button>
   </nav>
@@ -10,11 +9,15 @@
 </template>
 
 <script setup>
-import { signOut } from 'firebase/auth';
-import { auth } from './main.js';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from '@/main.js';
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
 const logout = () => {
-  signOut(auth)
+  auth.signOut()
   .then(() => {
     alert('Successfully logged out');
     this.$router.push('/');

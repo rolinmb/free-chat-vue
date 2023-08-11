@@ -1,6 +1,6 @@
 Made with Google Firebase, Vercel and Vue
 
-TODO: get Firebase Google Sign In With Popup to work
+TODO: fix firebase.auth.GoogleAuthProvider() login errors
 
 npm run serve to test
 
